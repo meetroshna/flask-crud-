@@ -31,7 +31,7 @@ def add_user():
         con.commit()
         flash('Student Added','success')
         return redirect(url_for("index"))
-    return render_template("add_user.html")
+    return render_template("user_add.html")
 
 #Editing the details of the student
 @app.route("/edit_user/<string:student_id>",methods=['POST','GET'])
@@ -52,7 +52,7 @@ def edit_user(student_id):
     cur=con.cursor()
     cur.execute("select * from student where student_id=?",(student_id,))
     data=cur.fetchone()
-    return render_template("edit_user.html",datas=data)
+    return render_template("user_edit.html",datas=data)
 
 #Deleting the details of a particular student
 @app.route("/delete_user/<string:student_id>",methods=['GET'])
