@@ -1,15 +1,10 @@
 import sqlite3 as sql
 
-#connect to SQLite
+#connecting to the database
 con = sql.connect('student.db')
-
-#Create a Connection
 cur = con.cursor()
-
-#Drop users table if already exsist.
 cur.execute("DROP TABLE IF EXISTS student")
-
-#Create users table  in db_web database
+#Creating a table here
 sql ='''CREATE TABLE "student" (
 	"student_id"	INTEGER PRIMARY KEY AUTOINCREMENT,
 	"first_name"	TEXT,
@@ -18,9 +13,5 @@ sql ='''CREATE TABLE "student" (
     "amount_due"	TEXT
 )'''
 cur.execute(sql)
-
-#commit changes
 con.commit()
-
-#close the connection
 con.close()
